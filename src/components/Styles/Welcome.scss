@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+
+.content-wrapper {
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  overflow: hidden;
+  display: grid;
+  position: relative;
+  .button {
+    position: absolute;
+    justify-self: center;
+    top: 50%;
+    color: white;
+    opacity: 0;
+  }
+}
+.innerButton {
+  background-color: rgb(248, 102, 0);
+  border: 1px solid rgb(248, 102, 0);
+  font-family: "Roboto", sans-serif;
+  border-radius: 3px;
+}
+
+.bar1 {
+  background: red;
+  inline-size: 100%;
+  block-size: 33.3vh;
+  opacity: 1;
+}
+.bar2 {
+  background: white;
+  inline-size: 100%;
+  block-size: 33.3vh;
+  opacity: 1;
+}
+.bar3 {
+  background: blue;
+  inline-size: 100%;
+  block-size: 33.3vh;
+  opacity: 1;
+}
