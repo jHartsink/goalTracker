@@ -1,53 +1,16 @@
 import React from "react";
-import { useAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+
 import "bootstrap/dist/css/bootstrap.min.css";
-import "./Styles/Dashboard.css";
+import "./Styles/footer.css";
 
-export default function Footer() {
-
-    const { logout } = useAuth();
-    const navigate = useNavigate();
-    
-    function submit() {
-      navigate("/result");
-    }
-  
-    async function handleLogout() {
-      try {
-        await logout();
-        navigate("/");
-      } catch {}
-    }
-  
-  return <>
-        
+export default function Footer({ keepCount }) {
+  return (
+    <>
       <div className="footer">
-        <button
-          type="button"
-          className="submit-button"
-          variant="link"
-          onClick={handleLogout}
-        >
-          Log Out
-        </button>
-        <button
-          type="button"
-          className="submit-button"
-          variant="link"
-          onClick={submit}
-        >
-          Submit
-        </button>
-        <button
-          type="button"
-          className="submit-button"
-          variant="link"
-          onClick={handleLogout}
-        >
-          Reset
+        <button type="button" className="submit-button" variant="link">
+          {keepCount()}/9
         </button>
       </div>
-  
-  </>;
+    </>
+  );
 }

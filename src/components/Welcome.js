@@ -12,27 +12,27 @@ function Welcome() {
   useEffect(() => {
     gsap.from(loader1.current, {
       delay: 1,
-      duration: 2,
-      x: "-100%",
+      duration: 3,
+      x: "-200%",
       yoyo: true,
       opacity: 0,
     });
     gsap.from(loader2.current, {
       delay: 1,
-      duration: 2,
-      x: "100%",
+      duration: 3,
+      x: "200%",
       yoyo: true,
       opacity: 0,
     });
     gsap.from(loader3.current, {
       delay: 1,
-      duration: 2,
-      x: "-100%",
+      duration: 3,
+      x: "-200%",
       yoyo: true,
       opacity: 0,
     });
     gsap.to(button.current, {
-      delay: 3,
+      delay: 3.7,
       opacity: 1,
       duration: 1.5,
       scale: 5,

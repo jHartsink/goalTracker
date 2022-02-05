@@ -1,57 +1,62 @@
-import React, { useState } from "react";
-import { useAuth } from "../context/AuthContext";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./Styles/Dashboard.css";
-import { dataBase } from "./Data/Database";
 import Footer from "./footer";
+import dataBase from "./Data/Database";
+
+import Header from "./header";
 
 export default function Dashboard() {
-  const { currentUser } = useAuth();
-  const [count, setCount] = useState(dataBase.all.count);
+  const [db, setDb] = useState(dataBase);
+  const [isActive, setActive] = useState("false");
+  const [showCertificate, setShowCertificate] = useState(false);
 
+  useEffect(() => {
+    setShowCertificate(keepCount() === 9);
+  }, [db]);
+
+  const keepCount = () => {
+    const clickedHabits = db.filter((habit) => habit.count > 0);
+    return clickedHabits.length;
+  };
   const increaseQuantity = (index) => {
-    const currentItems = [...count];
-    currentItems[index].count += 1;
-    setCount(currentItems);
+    const newDb = [...db];
+    newDb[index].count += 1;
+    setDb(newDb);
+    setActive(!isActive);
   };
 
   return (
     <>
-      {" "}
-      <h1>Embrace your Dutch Habits</h1>
-      <div className="welcome-message">
-        <strong>Welcome: </strong> {currentUser.email}
-      </div>
+      <Header />
       <div className="dashboard-wrapper">
-        {dataBase.row1.map((row1) => (
-          <div className="title">
-            {dataBase[row1].title}
-            <div className=".fill-boxes">
-              <img src={dataBase[row1].img} alt="img"></img>
-            </div>
-            <button className="submit-button">I have done this.</button>
-            <div className="handler">{dataBase[row1].button}</div>
-          </div>
-        ))}
-      </div>
-      <div className="dashboard-wrapper2">
-        {dataBase.row2.map((row2, i) => (
-          <div className="title">
-            {dataBase[row2].title}
+        {db.map((habit, index) => (
+          <div key={habit.name} className="title">
+            {habit.title}
             <div>
-              <img src={dataBase[row2].img} alt="img"></img>
+              <div className={habit.count > 0 ? "images-done" : "images"}>
+                <img src={habit.img} alt="img"></img>
+              </div>
             </div>
             <button
               className="submit-button"
-              onClick={() => increaseQuantity(i)}
+              onClick={() => increaseQuantity(index)}
             >
-              I have done this.
+              {habit.count > 0 ? "done" : "not done"}
             </button>
-            <div className="handler">{dataBase[row2].count}</div>
           </div>
         ))}
       </div>
-      <Footer />
+
+      <Footer db={db} keepCount={keepCount} />
+      {showCertificate && (
+        <button className="showCertificate">
+          <a href="https://file.io/leFfhMSKD1oL" download>
+            Click to download
+          </a>
+        </button>
+      )}
     </>
   );
 }
