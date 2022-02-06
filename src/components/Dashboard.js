@@ -52,7 +52,7 @@ export default function Dashboard() {
       <Footer db={db} keepCount={keepCount} />
       {showCertificate && (
         <button className="showCertificate">
-          <a href="https://file.io/leFfhMSKD1oL" download>
+          <a href="https://easyupload.io/tm9ew2" download>
             Click to download
           </a>
         </button>

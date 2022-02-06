@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Oxygen&display=swap');
 .content-wrapper {
   width: 100vw;
   height: 100vh;
@@ -21,7 +21,7 @@
 .innerButton {
   background-color: #f86600;
   border: 1px solid #f86600;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Oxygen', sans-serif;
   border-radius: 3px;
 }
 

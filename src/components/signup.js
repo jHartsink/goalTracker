@@ -63,7 +63,7 @@ export default function Signup() {
               </div>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
-                 className="lion"
+                className="lion"
                 version="1.1"
                 id="Layer_1"
                 x="0px"
@@ -72,7 +72,6 @@ export default function Signup() {
                 height="1027.37px"
                 viewBox="0 0 788.4 1027.37"
                 enable-background="new 0 0 788.4 1027.37"
-                
               >
                 <g>
                   <g>
